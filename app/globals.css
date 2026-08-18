@@ -20,7 +20,28 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-image: radial-gradient(#00000008 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+@keyframes drift {
+  0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+  50% { transform: translateY(-14px) rotate(calc(var(--r, 0deg) + 4deg)); }
+}
+
+.sticker-drift {
+  animation: drift 6s ease-in-out infinite;
+}
+
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal-visible {
+  animation: reveal-up 0.7s ease forwards;
+}
+
+.font-script {
+  font-family: var(--font-caveat);
 }
