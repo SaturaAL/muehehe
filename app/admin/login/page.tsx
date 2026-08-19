@@ -17,7 +17,7 @@ export default function LoginPage() {
         action={handleSubmit}
         className="w-full max-w-sm rounded-lg bg-white p-8 shadow-md"
       >
-        <h1 className="mb-6 text-xl font-semibold">Admin Login</h1>
+        <h1 className="mb-6 text-xl font-semibold">Satura A. L, Passwordnyaa ?</h1>
         <input
           type="password"
           name="password"
@@ -30,7 +30,7 @@ export default function LoginPage() {
           type="submit"
           className="w-full rounded bg-black py-2 text-white hover:bg-gray-800"
         >
-          Masuk
+          Lah Ayo!
         </button>
       </form>
     </div>

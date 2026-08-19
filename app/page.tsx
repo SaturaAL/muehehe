@@ -7,12 +7,13 @@ import BackgroundBlobs from "@/components/BackgroundBlobs";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import QuickPreview from "@/components/QuickPreview";
 import ProgrammingHome from "@/components/ProgrammingHome";
+import About from "@/components/About";
 
 export default async function Home() {
   const posts = await prisma.post.findMany({ orderBy: { createdAt: "desc" } });
-  const latest = posts[0];
   const illustrations = posts.filter((p) => p.type === "ILLUSTRATION");
   const programming = posts.filter((p) => p.type === "PROGRAMMING");
+  const latest = illustrations[0];
 
   return (
     <div className="relative min-h-screen overflow-hidden">
@@ -29,26 +30,39 @@ export default async function Home() {
             <p className="mb-6 max-w-md text-[#2B2622]/60">
               {latest ? latest.description : "Digital Illustrator · UI/UX Designer · Frontend Developer"}
             </p>
-            <div className="flex flex-wrap gap-2">
-              {["Illustrator", "UI/UX", "Frontend Dev"].map((tag) => (
-                <span key={tag} className="rounded-full border border-[#2B2622]/20 px-3 py-1 text-xs">
-                  {tag}
-                </span>
-              ))}
-            </div>
           </RevealOnScroll>
 
           {latest && (
             <RevealOnScroll delay={0.1}>
-              <div className="relative rotate-[-3deg] rounded-sm bg-white p-3 pb-8 shadow-xl transition hover:rotate-0">
-                <div className="absolute -top-3 left-1/2 h-6 w-20 -translate-x-1/2 rotate-[-2deg] bg-[#E4B15A]/70" />
+              <Link
+                href="/gallery"
+                className="group relative block rotate-[-3deg] rounded-sm bg-white p-3 pb-8 shadow-xl transition hover:rotate-0"
+              >
+                <div className="absolute -top-3 left-1/2 z-10 h-6 w-20 -translate-x-1/2 rotate-[-2deg] bg-[#E4B15A]/70" />
                 <div className="relative aspect-video w-full overflow-hidden">
-                  <Image src={latest.imageUrl} alt={latest.title} fill className="object-cover" />
+                  <Image
+                    src={latest.imageUrl}
+                    alt={latest.title}
+                    fill
+                    className="object-cover transition group-hover:brightness-90"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-[#2B2622]/0 opacity-0 transition-all duration-300 group-hover:bg-[#2B2622]/40 group-hover:opacity-100">
+                    <span className="translate-y-2 rounded-full bg-white px-4 py-1.5 text-xs font-medium text-[#2B2622] opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                      See More
+                    </span>
+                  </div>
                 </div>
                 <p className="mt-3 text-center font-script text-xl">{latest.title}</p>
-              </div>
+              </Link>
             </RevealOnScroll>
           )}
+        </section>
+
+        <section className="py-16">
+          <RevealOnScroll>
+            <h2 className="mb-8 font-script text-3xl text-[#DD8C8C]">About Me</h2>
+            <About />
+          </RevealOnScroll>
         </section>
 
         <section className="py-10">

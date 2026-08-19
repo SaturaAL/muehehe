@@ -60,6 +60,7 @@ export type PostCountAggregateOutputType = {
   title: number
   description: number
   imageUrl: number
+  images: number
   type: number
   figmaUrl: number
   projectUrl: number
@@ -103,6 +104,7 @@ export type PostCountAggregateInputType = {
   title?: true
   description?: true
   imageUrl?: true
+  images?: true
   type?: true
   figmaUrl?: true
   projectUrl?: true
@@ -201,6 +203,7 @@ export type PostGroupByOutputType = {
   title: string
   description: string
   imageUrl: string
+  images: runtime.JsonValue | null
   type: $Enums.PostType
   figmaUrl: string | null
   projectUrl: string | null
@@ -235,6 +238,7 @@ export type PostWhereInput = {
   title?: Prisma.StringFilter<"Post"> | string
   description?: Prisma.StringFilter<"Post"> | string
   imageUrl?: Prisma.StringFilter<"Post"> | string
+  images?: Prisma.JsonNullableFilter<"Post">
   type?: Prisma.EnumPostTypeFilter<"Post"> | $Enums.PostType
   figmaUrl?: Prisma.StringNullableFilter<"Post"> | string | null
   projectUrl?: Prisma.StringNullableFilter<"Post"> | string | null
@@ -246,6 +250,7 @@ export type PostOrderByWithRelationInput = {
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
+  images?: Prisma.SortOrderInput | Prisma.SortOrder
   type?: Prisma.SortOrder
   figmaUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   projectUrl?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -261,6 +266,7 @@ export type PostWhereUniqueInput = Prisma.AtLeast<{
   title?: Prisma.StringFilter<"Post"> | string
   description?: Prisma.StringFilter<"Post"> | string
   imageUrl?: Prisma.StringFilter<"Post"> | string
+  images?: Prisma.JsonNullableFilter<"Post">
   type?: Prisma.EnumPostTypeFilter<"Post"> | $Enums.PostType
   figmaUrl?: Prisma.StringNullableFilter<"Post"> | string | null
   projectUrl?: Prisma.StringNullableFilter<"Post"> | string | null
@@ -272,6 +278,7 @@ export type PostOrderByWithAggregationInput = {
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
+  images?: Prisma.SortOrderInput | Prisma.SortOrder
   type?: Prisma.SortOrder
   figmaUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   projectUrl?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -291,6 +298,7 @@ export type PostScalarWhereWithAggregatesInput = {
   title?: Prisma.StringWithAggregatesFilter<"Post"> | string
   description?: Prisma.StringWithAggregatesFilter<"Post"> | string
   imageUrl?: Prisma.StringWithAggregatesFilter<"Post"> | string
+  images?: Prisma.JsonNullableWithAggregatesFilter<"Post">
   type?: Prisma.EnumPostTypeWithAggregatesFilter<"Post"> | $Enums.PostType
   figmaUrl?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
   projectUrl?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
@@ -301,6 +309,7 @@ export type PostCreateInput = {
   title: string
   description: string
   imageUrl: string
+  images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   type: $Enums.PostType
   figmaUrl?: string | null
   projectUrl?: string | null
@@ -312,6 +321,7 @@ export type PostUncheckedCreateInput = {
   title: string
   description: string
   imageUrl: string
+  images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   type: $Enums.PostType
   figmaUrl?: string | null
   projectUrl?: string | null
@@ -322,6 +332,7 @@ export type PostUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   type?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   figmaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   projectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -333,6 +344,7 @@ export type PostUncheckedUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   type?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   figmaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   projectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -344,6 +356,7 @@ export type PostCreateManyInput = {
   title: string
   description: string
   imageUrl: string
+  images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   type: $Enums.PostType
   figmaUrl?: string | null
   projectUrl?: string | null
@@ -354,6 +367,7 @@ export type PostUpdateManyMutationInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   type?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   figmaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   projectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -365,6 +379,7 @@ export type PostUncheckedUpdateManyInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  images?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   type?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   figmaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   projectUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -382,6 +397,7 @@ export type PostCountOrderByAggregateInput = {
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
+  images?: Prisma.SortOrder
   type?: Prisma.SortOrder
   figmaUrl?: Prisma.SortOrder
   projectUrl?: Prisma.SortOrder
@@ -449,6 +465,7 @@ export type PostSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   title?: boolean
   description?: boolean
   imageUrl?: boolean
+  images?: boolean
   type?: boolean
   figmaUrl?: boolean
   projectUrl?: boolean
@@ -462,13 +479,14 @@ export type PostSelectScalar = {
   title?: boolean
   description?: boolean
   imageUrl?: boolean
+  images?: boolean
   type?: boolean
   figmaUrl?: boolean
   projectUrl?: boolean
   createdAt?: boolean
 }
 
-export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "imageUrl" | "type" | "figmaUrl" | "projectUrl" | "createdAt", ExtArgs["result"]["post"]>
+export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "imageUrl" | "images" | "type" | "figmaUrl" | "projectUrl" | "createdAt", ExtArgs["result"]["post"]>
 
 export type $PostPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Post"
@@ -478,6 +496,7 @@ export type $PostPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     title: string
     description: string
     imageUrl: string
+    images: runtime.JsonValue | null
     type: $Enums.PostType
     figmaUrl: string | null
     projectUrl: string | null
@@ -855,6 +874,7 @@ export interface PostFieldRefs {
   readonly title: Prisma.FieldRef<"Post", 'String'>
   readonly description: Prisma.FieldRef<"Post", 'String'>
   readonly imageUrl: Prisma.FieldRef<"Post", 'String'>
+  readonly images: Prisma.FieldRef<"Post", 'Json'>
   readonly type: Prisma.FieldRef<"Post", 'PostType'>
   readonly figmaUrl: Prisma.FieldRef<"Post", 'String'>
   readonly projectUrl: Prisma.FieldRef<"Post", 'String'>

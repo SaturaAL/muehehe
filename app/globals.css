@@ -1,27 +1,44 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
-  background-image: radial-gradient(#00000008 1px, transparent 1px);
-  background-size: 22px 22px;
+  background-image:
+    linear-gradient(rgba(250, 246, 239, 0.781), rgba(250, 246, 239, 0.568)),
+    url('public/textures/pprteks.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background-color: #E8A0A0;
+  color: #2B2622;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF6EF;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #E8A0A0, #E4B15A);
+  opacity: 1;
+  border-radius: 10px;
 }
 
 @keyframes drift {
@@ -31,7 +48,15 @@ body {
 
 .sticker-drift {
   animation: drift 6s ease-in-out infinite;
+  filter:
+    drop-shadow(4px 6px 6px rgba(43, 38, 34, 0.18))
+    drop-shadow(9px 13px 18px rgba(43, 38, 34, 0.08));
 }
+.sticker-drift-dashed {
+  animation: drift 6s ease-in-out infinite;
+}
+
+
 
 @keyframes reveal-up {
   from { opacity: 0; transform: translateY(24px); }
@@ -39,9 +64,48 @@ body {
 }
 
 .reveal-visible {
+  margin-top: 20px;
   animation: reveal-up 0.7s ease forwards;
 }
 
 .font-script {
   font-family: var(--font-caveat);
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  50% { border-color: transparent; }
+}
+
+.typewriter {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #2B2622;
+  animation:
+    typing 2.5s steps(30, end) forwards,
+    blink-caret 0.6s step-end infinite;
+}
+
+.stamp {
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  box-shadow:
+    5px 5px 0 rgba(43, 38, 34, 0.2),
+    10px 10px 0 rgba(43, 38, 34, 0.15),
+    18px 18px 10px rgba(43, 38, 34, 0.2),
+    25px 25px 30px rgba(43, 38, 34, 0.35);
+}
+
+.stamp:hover {
+  color: #973939;
+  box-shadow:
+    8px 8px 0 rgba(43, 38, 34, 0.25),
+    16px 16px 0 rgba(43, 38, 34, 0.2),
+    25px 25px 15px rgba(43, 38, 34, 0.25),
+    35px 35px 40px rgba(43, 38, 34, 0.5);
+  transform: translate(-2px, 3px) rotate(var(--tilt, -4deg));
 }

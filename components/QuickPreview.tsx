@@ -12,10 +12,15 @@ export default function QuickPreview({ posts }: { posts: Post[] }) {
         <Link
           key={post.id}
           href="/gallery"
-          className="group relative aspect-square overflow-hidden rounded-sm bg-white p-1.5 shadow-md transition hover:-translate-y-1 hover:shadow-xl"
+          className="group relative aspect-square overflow-hidden rounded-sm bg-white p-1.5 shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl"
         >
           <div className="relative h-full w-full overflow-hidden">
-            <Image src={post.imageUrl} alt={post.title} fill className="object-cover transition group-hover:brightness-90" />
+            <Image
+              src={post.imageUrl}
+              alt={post.title}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-110"
+            />
           </div>
         </Link>
       ))}

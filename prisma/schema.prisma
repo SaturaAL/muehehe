@@ -16,6 +16,7 @@ model Post {
   title       String
   description String   @db.Text
   imageUrl    String
+  images      Json?
   type        PostType
   figmaUrl    String?
   projectUrl  String?

@@ -1,6 +1,6 @@
 "use server";
 
-import { createSession } from "@/lib/auth";
+import { createSession, destroySession } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
 export async function loginAction(formData: FormData) {
@@ -12,4 +12,9 @@ export async function loginAction(formData: FormData) {
 
   await createSession();
   redirect("/admin");
+}
+
+export async function logoutAction() {
+  await destroySession();
+  redirect("/admin/login");
 }
