@@ -83,77 +83,230 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="relative z-10 mt-24 overflow-hidden border-t-2 border-dashed border-[#2B2622]/20 px-6 pb-8 pt-20 text-center"
-      style={{ backgroundColor: "#ffffff8c" }}
+      className="
+        relative z-10 mt-20
+        overflow-hidden
+        border-t-2 border-dashed border-[#2B2622]/20
+        bg-[#ffffff8c]
+        px-5 pb-7 pt-14
+        text-center
+        sm:px-6 sm:pt-18
+      "
     >
-      {/* Decorative blobs */}
-      <div className="pointer-events-none absolute -left-20 top-10 h-52 w-52 rounded-full bg-[#E8A0A0]/20 blur-3xl" />
-      <div className="pointer-events-none absolute -right-20 bottom-0 h-64 w-64 rounded-full bg-[#E4B15A]/20 blur-3xl" />
+      {/* Background blobs */}
+      <div
+        className="
+          pointer-events-none absolute
+          -left-24 top-8
+          h-44 w-44
+          rounded-full
+          bg-[#E8A0A0]/20
+          blur-3xl
+          sm:-left-20 sm:h-52 sm:w-52
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none absolute
+          -right-24 bottom-0
+          h-52 w-52
+          rounded-full
+          bg-[#E4B15A]/20
+          blur-3xl
+          sm:-right-20 sm:h-64 sm:w-64
+        "
+      />
 
       {/* Decorative stars */}
-      <span className="absolute left-[12%] top-16 rotate-[-15deg] text-4xl text-[#E4B15A]/60">
+      <span
+        className="
+          pointer-events-none absolute
+          left-[8%] top-12
+          rotate-[-15deg]
+          text-2xl text-[#E4B15A]/60
+          sm:left-[12%] sm:top-16 sm:text-4xl
+        "
+      >
         ✦
       </span>
 
-      <span className="absolute right-[13%] top-24 rotate-[15deg] text-3xl text-[#DD8C8C]/60">
+      <span
+        className="
+          pointer-events-none absolute
+          right-[9%] top-20
+          rotate-[15deg]
+          text-2xl text-[#DD8C8C]/60
+          sm:right-[13%] sm:top-24 sm:text-3xl
+        "
+      >
         ✦
       </span>
 
-      <span className="absolute bottom-20 left-[20%] text-xl text-[#9CC0D8]/60">
+      <span
+        className="
+          pointer-events-none absolute
+          bottom-16 left-[12%]
+          text-lg text-[#9CC0D8]/60
+          sm:bottom-20 sm:left-[20%] sm:text-xl
+        "
+      >
         ✧
       </span>
 
-      {/* Main heading */}
-      <div className="relative">
-        <p className="mb-[-8px] rotate-[-2deg] font-script text-5xl text-[#DD8C8C] drop-shadow-[3px_4px_0_rgba(43,38,34,0.12)] md:text-7xl">
-          Let&apos;s Create
-        </p>
+      {/* Main CTA */}
+      <div
+        className="
+          relative mx-auto
+          max-w-2xl
+          rounded-[2rem]
+          border border-white/70
+          bg-white/35
+          px-5 py-8
+          shadow-[0_12px_35px_rgba(43,38,34,0.06)]
+          backdrop-blur-sm
+          sm:px-8 sm:py-10
+        "
+      >
+        {/* Little tape */}
+        <div
+          className="
+            absolute
+            -top-3 left-1/2
+            h-6 w-20
+            -translate-x-1/2
+            rotate-[-2deg]
+            bg-[#E4B15A]/45
+            shadow-sm
+          "
+        />
 
-        <p className="rotate-[1deg] font-script text-5xl text-[#2B2622] drop-shadow-[4px_5px_0_rgba(232,160,160,0.35)] md:text-7xl">
-          Something Together
-        </p>
-      </div>
+        <div className="relative">
+          <p
+            className="
+              mb-[-4px]
+              rotate-[-2deg]
+              font-script
+              text-5xl
+              leading-tight
+              text-[#DD8C8C]
+              drop-shadow-[2px_3px_0_rgba(43,38,34,0.10)]
+              sm:mb-[-8px]
+              sm:text-6xl
+              md:text-7xl
+            "
+          >
+            Let&apos;s Create
+          </p>
 
-      {/* Divider */}
-      <div className="mx-auto my-8 flex max-w-xs items-center justify-center gap-3">
-        <span className="h-px flex-1 bg-[#2B2622]/15" />
-        <span className="rotate-12 text-[#DD8C8C]">✦</span>
-        <span className="h-px flex-1 bg-[#2B2622]/15" />
-      </div>
+          <p
+            className="
+              rotate-[1deg]
+              font-script
+              text-5xl
+              leading-tight
+              text-[#2B2622]
+              drop-shadow-[3px_4px_0_rgba(232,160,160,0.35)]
+              sm:text-6xl
+              md:text-7xl
+            "
+          >
+            Something Together
+          </p>
+        </div>
 
-      {/* Social buttons */}
-      <div className="relative mb-14 flex flex-wrap justify-center gap-5">
-        {socials.map((s, index) => {
-          const Icon = s.icon;
+        {/* Divider */}
+        <div className="mx-auto my-7 flex max-w-[220px] items-center justify-center gap-3 sm:my-4 sm:max-w-xs">
 
-          return (
-            <a
-              key={s.name}
-              href={s.href}
-              target={s.external ? "_blank" : undefined}
-              rel={s.external ? "noopener noreferrer" : undefined}
-              aria-label={s.name}
-              className={`group relative flex h-14 w-14 items-center justify-center rounded-full border border-[#2B2622]/10 bg-white text-[#2B2622] shadow-[4px_5px_0_rgba(43,38,34,0.12),8px_10px_18px_rgba(43,38,34,0.08)] transition-all duration-300 hover:-translate-y-3 hover:rotate-[6deg] hover:text-white hover:shadow-[7px_10px_0_rgba(43,38,34,0.18),12px_16px_25px_rgba(43,38,34,0.18)] ${s.color}`}
-              style={{
-                transform: `rotate(${index % 2 === 0 ? "-3" : "3"}deg)`,
-              }}
-            >
-              <Icon className="relative z-10 h-5 w-5 transition-transform duration-300 group-hover:scale-125" />
+        </div>
 
-              <span className="pointer-events-none absolute -inset-1 rounded-full border border-dashed border-[#2B2622]/10 opacity-0 transition-all duration-300 group-hover:rotate-45 group-hover:opacity-100" />
-            </a>
-          );
-        })}
+        {/* Social buttons */}
+        <div className="relative flex flex-wrap justify-center gap-3 sm:gap-5">
+          {socials.map((s, index) => {
+            const Icon = s.icon;
+
+            return (
+              <a
+                key={s.name}
+                href={s.href}
+                target={s.external ? "_blank" : undefined}
+                rel={s.external ? "noopener noreferrer" : undefined}
+                aria-label={s.name}
+                className={`
+                  group relative
+                  flex h-12 w-12
+                  items-center justify-center
+                  rounded-full
+                  border border-[#2B2622]/10
+                  bg-white
+                  text-[#2B2622]
+                  shadow-[3px_4px_0_rgba(43,38,34,0.10),6px_8px_14px_rgba(43,38,34,0.07)]
+                  transition-all duration-300
+                  hover:-translate-y-2
+                  hover:rotate-[5deg]
+                  hover:text-white
+                  hover:shadow-[5px_8px_0_rgba(43,38,34,0.16),10px_13px_20px_rgba(43,38,34,0.14)]
+                  sm:h-14 sm:w-14
+                  ${s.color}
+                `}
+                style={{
+                  transform: `rotate(${
+                    index % 2 === 0 ? "-2" : "2"
+                  }deg)`,
+                }}
+              >
+                <Icon className="relative z-10 h-5 w-5 transition-transform duration-300 group-hover:scale-125" />
+
+                <span
+                  className="
+                    pointer-events-none
+                    absolute -inset-1
+                    rounded-full
+                    border border-dashed
+                    border-[#2B2622]/10
+                    opacity-0
+                    transition-all duration-300
+                    group-hover:rotate-45
+                    group-hover:opacity-100
+                  "
+                />
+              </a>
+            );
+          })}
+        </div>
       </div>
 
       {/* Footer signature */}
-      <div className="relative flex items-center justify-center">
-        <span className="rotate-[-2deg] border border-[#2B2622]/10 bg-[#E8A0A0]/50 px-5 py-2 font-script text-sm text-[#2B2622] shadow-[3px_4px_0_rgba(43,38,34,0.12)]">
+      <div className="relative mt-10 flex justify-center">
+        <span
+          className="
+            rotate-[-2deg]
+            border border-[#2B2622]/10
+            bg-[#E8A0A0]/50
+            px-4 py-1.5
+            font-script
+            text-sm
+            text-[#2B2622]
+            shadow-[3px_4px_0_rgba(43,38,34,0.10)]
+            sm:px-5 sm:py-2
+          "
+        >
           Web maintained by Satura Ararya L
         </span>
       </div>
 
-      <p className="mt-8 text-[10px] uppercase tracking-[0.3em] text-[#2B2622]/25">
+      <p
+        className="
+          mt-6
+          text-[9px]
+          uppercase
+          tracking-[0.22em]
+          text-[#2B2622]/25
+          sm:mt-8
+          sm:text-[10px]
+          sm:tracking-[0.3em]
+        "
+      >
         Made with curiosity & chaos
       </p>
     </footer>
