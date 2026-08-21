@@ -18,8 +18,8 @@ model Post {
   imageUrl    String
   images      Json?
   type        PostType
-  figmaUrl    String?
-  projectUrl  String?
+  figmaUrl    String?  @db.Text
+  projectUrl  String?  @db.Text
   createdAt   DateTime @default(now())
 }
 
