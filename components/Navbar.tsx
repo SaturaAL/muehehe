@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const pathname = usePathname();
+
   const navRef = useRef<HTMLElement>(null);
   const circleRef = useRef<HTMLDivElement>(null);
   const hoveringLink = useRef(false);
@@ -28,6 +31,24 @@ export default function Navbar() {
     { href: "/gallery", label: "Gallery" },
     { href: "/#contact", label: "Contact" },
   ];
+
+  const isActive = (href: string) => {
+    if (href === "/#contact") {
+      return pathname === "/" && hash === "#contact";
+    }
+    return pathname === href;
+  };
+
+  const [hash, setHash] = useState("");
+
+  useEffect(() => {
+    setHash(window.location.hash);
+    const handleHashChange = () => setHash(window.location.hash);
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+
 
   useEffect(() => {
     let raf: number;
@@ -60,7 +81,6 @@ export default function Navbar() {
     if (hoveringLink.current) return;
 
     const rect = navRef.current?.getBoundingClientRect();
-
     if (!rect) return;
 
     target.current = {
@@ -77,7 +97,6 @@ export default function Navbar() {
     hoveringLink.current = true;
 
     const navRect = navRef.current?.getBoundingClientRect();
-
     if (!navRect) return;
 
     const linkRect = e.currentTarget.getBoundingClientRect();
@@ -194,16 +213,21 @@ export default function Navbar() {
               href={link.href}
               onMouseEnter={handleLinkEnter}
               onMouseLeave={handleLinkLeave}
-              className="
+              className={`
                 relative
                 block
                 rounded-full
                 px-3 py-2
-                transition-all
+                transition-colors
                 duration-200
                 hover:text-white
                 md:px-4
-              "
+                ${
+                  isActive(link.href)
+                    ? "text-[#DD8C8C]"
+                    : "text-[#2B2622]/65"
+                }
+              `}
             >
               {link.label}
 

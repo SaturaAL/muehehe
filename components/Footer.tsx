@@ -128,7 +128,7 @@ export default function Footer() {
           sm:left-[12%] sm:top-16 sm:text-4xl
         "
       >
-        ✦
+        {"( •̯́ ₃ •̯̀)"}
       </span>
 
       <span
@@ -140,7 +140,7 @@ export default function Footer() {
           sm:right-[13%] sm:top-24 sm:text-3xl
         "
       >
-        ✦
+        (¬_¬")
       </span>
 
       <span
@@ -151,7 +151,7 @@ export default function Footer() {
           sm:bottom-20 sm:left-[20%] sm:text-xl
         "
       >
-        ✧
+        •ﻌ•
       </span>
 
       {/* Main CTA */}
