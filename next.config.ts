@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { hostname: "i.pinimg.com" },
       { hostname: "res.cloudinary.com" },
+      { hostname: "2t1spqwz9htcwxf3.public.blob.vercel-storage.com" },
     ],
   },
   allowedDevOrigins: ["192.168.100.4"],
