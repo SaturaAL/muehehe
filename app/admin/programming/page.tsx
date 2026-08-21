@@ -6,6 +6,8 @@ import DeleteButton from "@/components/DeleteButton";
 import Link from "next/link";
 import { Pencil } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminProgrammingPage() {
   const posts = await prisma.post.findMany({
     where: { type: "PROGRAMMING" },
